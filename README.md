@@ -1,1 +1,1 @@
-### obsydian and vscode
+### obsidian and vscode
