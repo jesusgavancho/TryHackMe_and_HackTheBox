@@ -72,7 +72,7 @@ hashcat -m 0 hashctf2 /usr/share/wordlists/rockyou.txt
 `05f3672ba34409136aa71b8d00070d1b:cutie`
 > then login to http://IP/login with the credentials 
 
-==Deskel:cutie==  give me 
+==Deskel:cutie==  give me THM{wh47_d1d_17_c057_70_cr4ck_7h3_5ql}
 
 - Easter 6 *THM{l37'5_p4r7y_h4rd}* (curl -s ip -D header.txt / then cat header.txt)
 - Easter 7 *THM{w3lc0m3!_4nd_w3lc0m3}* (change cookie value to 1 in inspect mode then refresh page)
