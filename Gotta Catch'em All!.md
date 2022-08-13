@@ -40,7 +40,7 @@ cd /home/pokemon/Videos/Gotta/Catch/Them/ALL!
 ```
 
 ```
-Could_this_be_what_Im_looking_for\?.cplusplus
+cat Could_this_be_what_Im_looking_for\?.cplusplus
 ```
 ### root
 
