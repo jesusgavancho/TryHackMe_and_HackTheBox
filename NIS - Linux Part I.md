@@ -494,7 +494,7 @@ date: Tue, 27 Sep 2022 01:16:34 GMT
 content-type: text/html; charset=utf-8
 set-cookie: AWSALB=WSWfgs7HxXokOt/PntZwQSjgAFWLM4io984Vl5hnUc5q3iAGc+HW/ElKdtC/dITJ5JxAIed8pWQwKMwHiEHsNOu8AxICrE07ShU4nh3UOxbOz9XD8OwW2cN3pU5i; Expires=Tue, 04 Oct 2022 01:16:34 GMT; Path=/
 set-cookie: AWSALBCORS=WSWfgs7HxXokOt/PntZwQSjgAFWLM4io984Vl5hnUc5q3iAGc+HW/ElKdtC/dITJ5JxAIed8pWQwKMwHiEHsNOu8AxICrE07ShU4nh3UOxbOz9XD8OwW2cN3pU5i; Expires=Tue, 04 Oct 2022 01:16:34 GMT; Path=/; SameSite=None
-set-cookie: _csrf=XroCqH9NP3YoVN0wnMoypEMz; Path=/
+set-cookie: _csrf=hhhahdada; Path=/
 set-cookie: connect.sid=s%3A5pqisyi7sIeY1tsaQtjc_u08oCXdpxbr.APIb755O7Ttk6S5CCrICIgCuF90FykqLsZzfpeFrw%2BU; Path=/; Expires=Tue, 04 Oct 2022 01:16:34 GMT; HttpOnly
 x-powered-by: Express
 cf-cache-status: DYNAMIC
