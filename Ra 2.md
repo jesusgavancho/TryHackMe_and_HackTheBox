@@ -1064,7 +1064,7 @@ Progress: 26439 / 220561 (11.99%)^C
 
 /backup 
 
-or usind dirsearch
+or using dirsearch
 
 ┌──(kali㉿kali)-[~/ra2]
 └─$ dirsearch -u https://fire.windcorp.thm -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -l -t 100 -x 400 
