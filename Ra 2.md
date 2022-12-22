@@ -1869,7 +1869,7 @@ C:\Users\Administrator\Desktop>type "Flag 3.txt"
 type "Flag 3.txt"
 THM{9a8b9f4f3af2bce68885106c1c8473ab85e0eda0}
 
-yep!!
+yep!! :)
 
 
 
