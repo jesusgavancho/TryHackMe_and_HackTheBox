@@ -1188,17 +1188,11 @@ use gobuster
 
 Who is the current db user? 
 
-**
+*root*
 
 What is the final flag? 
 
 *thm{sqlm@p_is_L0ve}*
-
-
-
-
-
-
 
 
 [[Insekube]]
