@@ -272,7 +272,7 @@ Answer the questions below
 
 Containerise the applications in the static site. What is the flag? 
 
-**
+*THM{APPLICATION_SHIPPED}*
 
 ![[Pasted image 20230208112845.png]]
 ![[Pasted image 20230208113123.png]]
