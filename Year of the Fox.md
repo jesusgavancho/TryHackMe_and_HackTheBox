@@ -969,10 +969,13 @@ THM{ODM3NTdkMDljYmM4ZjdhZWFhY2VjY2Fk}
 
 Here's the prize:
 
-YTAyNzQ3ODZlMmE2MjcwNzg2NjZkNjQ2Nzc5NzA0NjY2Njc2NjY4M2I2OTMyMzIzNTNhNjk2ODMwMwo=
+YTAyNzQ3ODZlMmE2MjcwNzg2NjZkNjQ2Nzc5NzA0NjY2Njc2NjY4M2I2OTMyMzIzNTNhNjk2ODMwMwo= (from base64)
 
 Good luck!
 
+https://cyberchef.io/#recipe=Reverse('Character')From_Hex('Auto')ROT13(true,true,false,21)&input=YTAyNzQ3ODZlMmE2MjcwNzg2NjZkNjQ2Nzc5NzA0NjY2Njc2NjY4M2I2OTMyMzIzNTNhNjk2ODMwMw
+
+08de5229f8abaa@tryhackme.com
 
 ```
 
