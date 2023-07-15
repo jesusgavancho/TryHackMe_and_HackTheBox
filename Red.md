@@ -744,6 +744,8 @@ blue@red:~$ /usr/bin/echo "10.8.19.103 redrules.thm" | sudo tee -a /etc/hosts
 [sudo] password for blue: 
 blue is not in the sudoers file.  This incident will be reported.
 
+blue@red:~$ /usr/bin/echo "10.8.19.103 redrules.thm" | tee -a /etc/hosts
+
 blue@red:~$ cat /etc/hosts
 127.0.0.1 localhost
 127.0.1.1 red
