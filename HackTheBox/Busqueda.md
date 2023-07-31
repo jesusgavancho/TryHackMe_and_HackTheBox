@@ -505,7 +505,7 @@ http://127.0.0.1:3000/
 
 nothing with user cody and pass of svc
 
-login with administrtor: yuiu1hoiu4i5ho1uh
+login with administrator: yuiu1hoiu4i5ho1uh
 
 scripts/system-checkup.py
 #!/bin/bash
